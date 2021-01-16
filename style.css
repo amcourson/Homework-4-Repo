@@ -1,3 +1,30 @@
-h4 {
+.Timeremaining {
     text-align: right;
+    margin-right: 80px
 }
+.HighScore {
+    text-align:left;
+    margin-left:80px;
+}
+
+.start-button {
+    align-content: center;
+    background:  rgb(241, 147, 186);
+    border-radius: 8px;
+    color: #000000;
+    cursor: pointer;
+    font-size: 2em;
+    letter-spacing: 0.21px;
+    line-height: 16px;
+    max-width: 255px;
+    padding: 20px 52px;
+    text-align: center;
+    transition-duration: 0.15s;
+    transition-property: background-color;
+    transition-timing-function: linear;
+    margin-top: 0.6em;
+}
+
+
+
+  
