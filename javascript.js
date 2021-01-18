@@ -1,6 +1,6 @@
 var startButton = document.querySelector(".start-button");
-var timeRemaining = document.getElementById(".time");
-var quizQuesions = document.getElementById(".quiz");
+var timeRemaining = document.getElementById("time");
+var quizQuestions = document.getElementById("questions");
 
 var secondsLeft =50;
 
@@ -21,74 +21,85 @@ function reduceTime(){
    //if chose answer is correct continue
 }
 
-
+startButton.addEventListener("click",function(){
+    showQuestions();
+    startButton.style.display = 'none'
+});
 //event listener button
 // when button is clicked, if wrong, take off time and move to new question. 
 //if correct move to new question
 //at the end display results 
 //ask initials and display highscores 
-
-function generateQuiz(questions, quizContainr, resultsContainer, submitButton)
-console.log("showQuestions")
 function showQuestions(){
     var myQuestions = [
         {
             question: "What is an array?",
-            answers: {
-                a:'An object that allows you to store multiple variable in a single varriable.',
-                b:'Something used in JavaScript.',
-                c: 'A list',
-            },
-            correctAnwser: 'a'
+            answers: [
+                'An object that allows you to store multiple variable in a single varriable.',
+                'Something used in JavaScript.',
+                'A list',
+            ],
+            correctAnwser: 0
         },
     {
         question: "What is a dataset?",
-        answers: {
-            a:'A set of data used in coding.',
-            b:'Contains structured data arranged in rows and colums.',
-            c:'Contains data attributes.',
-        },
-        correctAnswer: 'b',
+        answers: [
+            'A set of data used in coding.',
+            'Contains structured data arranged in rows and colums.',
+            'Contains data attributes.',
+        ],
+        correctAnswer: 1
     },
     {
         question: "What is HTML?",
-        answers: {
-            a:'HTML or Hypertext Markup :anguage is the standard markup language for documents designed to be displayed in a web browser.',
-            b:'A programming language.',
-            c:'Used to structure code in a webpage.',
+        answers: [
+            'HTML or Hypertext Markup :anguage is the standard markup language for documents designed to be displayed in a web browser.',
+            'A programming language.',
+            'Used to structure code in a webpage.',
 
-        },
-        correctAnswer: 'a',
+        ],
+        correctAnswer: 0
     }
     ];
 
-function showQuestions (questions,  quizContainer){
+    var textnode = document.createTextNode(myQuestions[0].question);        
+   
+quizQuestions.appendChild(textnode);
+showAnswers(myQuestions[0]);
+}
+
+function showAnswers (currentQuestion){
     var output = [];
-    var answers;
+    var answers = currentQuestion.answers;
 
-    for(var i =0; i < questions.length; i++){
-        answers = [];
-
-        for(letter in questions[i].answers){
-            answers.push(
-                
-            )
-        }
+    for(var i =0; i < answers.length; i++){
+        var node = document.createElement("button");               
+        var textnode = document.createTextNode(answers[i]);         
+        node.appendChild(textnode);
+        quizQuestions.appendChild(node);
+        
     }
 }
 
-function showReuslts(questions, quizContainer, resultsContainer){
+
+
+function showResults(questions, quizContainer, resultsContainer){
 
 }
 
-showQuestions(questions, quizContainer);
+// showQuestions(questions, quizContainer);
 
-submitButton.onclick = function(){
-    showResults(questions, quizCOntainer, resultsCOntainer);
-}
+// submitButton.onclick = function(){
+//     showResults(questions, quizContainer, resultsContainer);
+// }
 
-}
+
+function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
+// console.log("showQuestions")
+
 
 function showHighScore (){
 
 }
+}
+generateQuiz()
