@@ -1,5 +1,6 @@
 var startButton = document.querySelector(".start-button");
-var timeRemaining = document.getElementById(".time")
+var timeRemaining = document.getElementById(".time");
+var quizQuesions = document.getElementById(".quiz");
 
 var secondsLeft =50;
 
@@ -27,8 +28,8 @@ function reduceTime(){
 //at the end display results 
 //ask initials and display highscores 
 
-function generateQuiz
-
+function generateQuiz(questions, quizContainr, resultsContainer, submitButton)
+console.log("showQuestions")
 function showQuestions(){
     var myQuestions = [
         {
@@ -43,15 +44,51 @@ function showQuestions(){
     {
         question: "What is a dataset?",
         answers: {
-            a:'',
-            b:'',
-            c:'',
+            a:'A set of data used in coding.',
+            b:'Contains structured data arranged in rows and colums.',
+            c:'Contains data attributes.',
         },
-        correctAnswer: ''
+        correctAnswer: 'b',
+    },
+    {
+        question: "What is HTML?",
+        answers: {
+            a:'HTML or Hypertext Markup :anguage is the standard markup language for documents designed to be displayed in a web browser.',
+            b:'A programming language.',
+            c:'Used to structure code in a webpage.',
+
+        },
+        correctAnswer: 'a',
     }
-}
     ];
 
-function showResults
+function showQuestions (questions,  quizContainer){
+    var output = [];
+    var answers;
 
-function displayHighScores
+    for(var i =0; i < questions.length; i++){
+        answers = [];
+
+        for(letter in questions[i].answers){
+            answers.push(
+                
+            )
+        }
+    }
+}
+
+function showReuslts(questions, quizContainer, resultsContainer){
+
+}
+
+showQuestions(questions, quizContainer);
+
+submitButton.onclick = function(){
+    showResults(questions, quizCOntainer, resultsCOntainer);
+}
+
+}
+
+function showHighScore (){
+
+}
