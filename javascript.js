@@ -1,19 +1,29 @@
 var startButton = document.querySelector(".start-button");
-var timeRemaining = document.getElementById("time");
+var timeRemainingEl = document.getElementById("time");
 var quizQuestions = document.getElementById("questions");
+var correctAnswer = document.getElementById("correct");
 
-var secondsLeft =50;
+var i =0;
 
-function setTime(){
-    var timerInterval = setInterval(function(){
-        secondsLeft--;
-        timeRemaining.textContent = secondsLeft + "50 seconds left";
-        if (secondsLeft ===0) {
+function timerTimer(){
+    var timeLeft= 60;
+
+    var timerInterval =setInterval(function() {
+        timeRemainingEl.textContent = timeLeft + "seconds reamining";
+        timeLeft--;
+
+        if (timeLeft === 0) {
+            timeRemainingEl.textContent = "";
+            reduceTime();
             clearInterval(timerInterval);
-            sendMessage();
         }
     },1000);
 }
+
+
+
+
+
 
 function reduceTime(){
     timerInterval.textContent = "";
@@ -24,7 +34,11 @@ function reduceTime(){
 startButton.addEventListener("click",function(){
     showQuestions();
     startButton.style.display = 'none'
+
+    
 });
+
+
 //event listener button
 // when button is clicked, if wrong, take off time and move to new question. 
 //if correct move to new question
@@ -62,7 +76,7 @@ function showQuestions(){
     }
     ];
 
-    var textnode = document.createTextNode(myQuestions[0].question);        
+    var textnode = document.createTextNode(myQuestions[0,1,2].question);        
    
 quizQuestions.appendChild(textnode);
 showAnswers(myQuestions[0]);
@@ -81,7 +95,10 @@ function showAnswers (currentQuestion){
     }
 }
 
-
+correctAnswer.addEventListener('click',function(){
+    showAnswers(correctAnswer[0,1,2]);
+}
+);
 
 function showResults(questions, quizContainer, resultsContainer){
 
@@ -94,7 +111,7 @@ function showResults(questions, quizContainer, resultsContainer){
 // }
 
 
-function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
+function generateQuiz(questions, quizContainer, resultsContainer, submitButton, showAnswers, showHighScore){
 // console.log("showQuestions")
 
 
