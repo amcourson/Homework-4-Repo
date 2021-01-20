@@ -1,38 +1,34 @@
 var startButton = document.querySelector(".start-button");
-var timeRemainingEl = document.getElementById("time");
+var timeRemaining = document.getElementById("time");
 var quizQuestions = document.getElementById("questions");
 var correctAnswer = document.getElementById("correct");
-
-var i =0;
-
-function timerTimer(){
-    var timeLeft= 60;
-
-    var timerInterval =setInterval(function() {
-        timeRemainingEl.textContent = timeLeft + "seconds reamining";
-        timeLeft--;
-
-        if (timeLeft === 0) {
-            timeRemainingEl.textContent = "";
-            reduceTime();
-            clearInterval(timerInterval);
-        }
-    },1000);
-}
-
-
-
 
 
 
 function reduceTime(){
-    timerInterval.textContent = "";
+    var timeRemaining = 15;
+    var time = setInterval(function() {
+      console.log(timeRemaining);
+      timeRemaining--;
+      if(timeRemaining === 0) {
+        stopInterval()
+      }
+    }, 1000);
+    
+    var stopInterval = function() {
+      console.log('time is up!');
+      clearInterval(time);
+    }
+    
+   
+    // timerInterval.textContent = "";
    //if chosen answer is wrong take off time
    //if chose answer is correct continue
 }
 
 startButton.addEventListener("click",function(){
     showQuestions();
+    reduceTime();
     startButton.style.display = 'none'
 
     
@@ -95,10 +91,10 @@ function showAnswers (currentQuestion){
     }
 }
 
-correctAnswer.addEventListener('click',function(){
-    showAnswers(correctAnswer[0,1,2]);
-}
-);
+// correctAnswer.addEventListener('click',function(){
+//     showAnswers(correctAnswer[0,1,2]);
+// }
+// );
 
 function showResults(questions, quizContainer, resultsContainer){
 
