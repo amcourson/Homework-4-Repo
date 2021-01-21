@@ -1,7 +1,9 @@
 var startButton = document.querySelector(".start-button");
 var timeRemaining = document.getElementById("time");
 var quizQuestions = document.getElementById("questions");
-var correctAnswer = document.getElementById("correctanswers");
+var correctAnswer = document.getElementById("Answer0");
+var answer2 = document.getElementById("Answer1");
+var answer3 = document.getElementById("Answer2");
 
 
 
@@ -34,71 +36,107 @@ startButton.addEventListener("click", function () {
 
 });
 
+var myQuestions = [
+    {
+        question: "What is an array?",
+        answers: [
+            'An object that allows you to store multiple variable in a single varriable.',
+            'Something used in JavaScript.',
+            'A list',
+        ],
+        correctAnwser: 0
+    },
+    {
+        question: "What is a dataset?",
+        answers: [
+            'A set of data used in coding.',
+            'Contains structured data arranged in rows and colums.',
+            'Contains data attributes.',
+        ],
+        correctAnswer: 1
+    },
+    {
+        question: "What is HTML?",
+        answers: [
+            'HTML or Hypertext Markup :language is the standard markup language for documents designed to be displayed in a web browser.',
+            'A programming language.',
+            'Used to structure code in a webpage.',
 
+        ],
+        correctAnswer: 0
+    }
+];
 //event listener button
 // when button is clicked, if wrong, take off time and move to new question. 
 //if correct move to new question
 //at the end display results 
 //ask initials and display highscores 
 function showQuestions() {
-    var myQuestions = [
-        {
-            question: "What is an array?",
-            answers: [
-                'An object that allows you to store multiple variable in a single varriable.',
-                'Something used in JavaScript.',
-                'A list',
-            ],
-            correctAnwser: 0
-        },
-        {
-            question: "What is a dataset?",
-            answers: [
-                'A set of data used in coding.',
-                'Contains structured data arranged in rows and colums.',
-                'Contains data attributes.',
-            ],
-            correctAnswer: 1
-        },
-        {
-            question: "What is HTML?",
-            answers: [
-                'HTML or Hypertext Markup :language is the standard markup language for documents designed to be displayed in a web browser.',
-                'A programming language.',
-                'Used to structure code in a webpage.',
+//     var myQuestions = [
+//         {
+//             question: "What is an array?",
+//             answers: [
+//                 'An object that allows you to store multiple variable in a single varriable.',
+//                 'Something used in JavaScript.',
+//                 'A list',
+//             ],
+//             correctAnwser: 0
+//         },
+//         {
+//             question: "What is a dataset?",
+//             answers: [
+//                 'A set of data used in coding.',
+//                 'Contains structured data arranged in rows and colums.',
+//                 'Contains data attributes.',
+//             ],
+//             correctAnswer: 1
+//         },
+//         {
+//             question: "What is HTML?",
+//             answers: [
+//                 'HTML or Hypertext Markup :language is the standard markup language for documents designed to be displayed in a web browser.',
+//                 'A programming language.',
+//                 'Used to structure code in a webpage.',
 
-            ],
-            correctAnswer: 0
-        }
-    ];
+//             ],
+//             correctAnswer: 0
+//         }
+//     ];
 
-    var textnode = document.createTextNode(myQuestions[0, 1, 2].question);
+    var question1 = myQuestions[0].question
 
-    quizQuestions.appendChild(textnode);
-    showAnswers(myQuestions[0]);
+    quizQuestions.prepend(question1);
+    // showAnswers(myQuestions[0]);
+correctAnswer.textContent=myQuestions[0].answers[0];
+answer2.textContent=myQuestions[0].answers[1];
+answer3.textContent=myQuestions[0].answers[2];
+
 }
+
 
 function showAnswers(currentQuestion) {
-    var output = [];
-    var answers = currentQuestion.answers;
+    var question2 = myQuestions[1].question[0]
 
-    for (var i = 0; i < answers.length; i++) {
-        var node = document.createElement("button");
-        node.setAttribute("id","Answer"+ i);
-        var textnode = document.createTextNode(answers[i]);
-        node.appendChild(textnode);
-        quizQuestions.appendChild(node);
+    quizQuestions.prepend(question2);
+    // showAnswers(myQuestions[0]);
+correctAnswer.textContent=myQuestions[1].answers[0];
+answer2.textContent=myQuestions[1].answers[1];
+answer3.textContent=myQuestions[2].answers[2];
 
     }
-}
 
 
+// console.log(correctAnswer);
 correctAnswer.addEventListener('click', function () {
-    var Answer0 = document.getElementById("answer0")
-    if (Answer0.textContent === "HTML or Hypertext Markup :language is the standard markup language for documents designed to be displayed in a web browser.") {
+    var Answer0 = document.getElementById("Answer0");
+    console.log(Answer0.textContent);
+    if (Answer0.textContent === "An object that allows you to store multiple variable in a single varriable.") {
         alert("Correct Answer");
-    } else {//Incorrect}
-    }
+    } else {
+        alert("Wrong Answer");
+   showAnswers()
+ }
+
 
 
     function showResults(questions, quizContainer, resultsContainer) {
@@ -120,4 +158,5 @@ correctAnswer.addEventListener('click', function () {
 
         }
         generateQuiz()
-    }})
+    }
+})
